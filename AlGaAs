@@ -1,0 +1,59 @@
+# -*- coding: utf-8 -*-
+"""
+Spyder Editor
+
+This is a temporary script file.
+"""
+# http://dx.doi.org/10.1063/1.336070
+# GaAs, AlAs, and AlxGa1−xAs@B: Material parameters for use in
+# research and device applications
+
+
+import math as m
+import numpy as np
+
+c=2.998*10**8.0 #光速 2.998 108 m/s
+h=6.626*10**(-34)#普朗克常数 6.626 10 -34 Js 
+# q=1.602*10**(-19) #电荷量 库伦
+# hc=h*c/q*m.pow(10,9) #hc
+
+# 传入波长单位nm，组分参数，计算折射率
+def n(l,x):
+    Egl=1239.84/l #l单位nm
+    # #根据组分计算Eg，判断是否吸收光
+    # if x<0 or x> 1:
+    #      print("Aluminium fraction range 0 =< x =< 1")           
+    # elif x>=0.45:
+    #     Eg=1.9+0.125*x+0.143*x*x
+    # else :
+    #     Eg=1.422+1.2475*x
+    #     if Egl>=Eg:
+    #         print("Material is absorbing!")
+    E0=1.425 + 1.155*x + 0.37*x*x
+    k=Egl/E0 
+    E1=1.765+1.115*x+0.37*x*x    
+    k0=Egl/E1
+    A0=6.3+19.0*x #与组分相关的常数
+    B0=9.4-10.2*x #与组分相关的常数
+    f=(2-m.sqrt(1+k)-m.sqrt(1-k))/(k*k)
+    f0=(2-m.sqrt(1+k0)-m.sqrt(1-k0))/(k0*k0)
+    b=m.sqrt(m.pow((E0/E1),3))
+    p=m.sqrt(A0*(f+f0*0.5*b)+B0)
+    return(round(p,4))
+# #生成组分数组
+# s = np.arange(0, 1.1, 0.1)
+
+# for i in range(0,len(s)):
+#    print(s[i],n(940,s[i]))
+# 定义波长范围nm
+wl_min=700.00
+wl_max=1000.00
+npoints=int((wl_max-wl_min)/1)
+wl = np.linspace(wl_min, wl_max, npoints)
+# 定义组分
+x=0.45
+
+# # #============================   DATA OUTPUT   =================================
+# #f = open('out.txt', 'w')
+for i in range(npoints-1):
+    print("%.0f,%.4f" % (wl[i],n(wl[i],x)))
