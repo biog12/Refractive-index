@@ -13,3 +13,5 @@ In this equation the symbols and constants have the following meaning in the cas
 - x - Al fraction in the AlXGa1-XAs alloy
 - E0(x) = 1.425 + 1.155 x + 0.37 x2 [eV] - fundamental band gap at Γ-point
 - E0(x) + Δ0(x) = 1.765 + 1.115 x + 0.37 x2 [eV] - spin-orbit splitting energy
+--------------------------------------------------------------------------------------------------
+# pics3d macro
