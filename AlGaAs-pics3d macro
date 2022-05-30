@@ -68,5 +68,13 @@ def f(x,wl):
         return(n,n1,n2)
     
 wavelengths = np.linspace(350,1000,750)
-for i in range(len(wavelengths)):
-    print(wavelengths[i],f(0.95,wavelengths[i]))
+#molfrac=['0','0.1','0.2','0.3','0.4','0.5','0.6','0.7','0.8','0.9','1']
+#molfrac=[0,0.1,0.2,0.3,0.4,0.5,0.6,0.7,0.8,0.9,1]
+molfrac=np.arange(0,110,10).round(0)
+path="D:\\"
+for j in range(len(molfrac)):
+    with open(path+'Al'+str(molfrac[j])+'%'+'Ga'+'As'+'.csv','w',newline='') as l:    
+         write=csv.writer(l)
+         for i in range(len(wavelengths)):
+               write.writerow([wavelengths[i],f(0.1,wavelengths[i])])
+    l.close()
