@@ -15,3 +15,9 @@ In this equation the symbols and constants have the following meaning in the cas
 - E0(x) + Δ0(x) = 1.765 + 1.115 x + 0.37 x2 [eV] - spin-orbit splitting energy
 --------------------------------------------------------------------------------------------------
 # pics3d macro
+
+--------------------------------------------------------------------------------------------------
+# n-(AlxGa1-x)0.5In0.5P
+
+![image](https://user-images.githubusercontent.com/379532/226080873-2aa192da-1253-4eac-b9dc-4cbbad571cc2.png)
+![image](https://user-images.githubusercontent.com/379532/226080906-dd636ec7-1fb0-48d9-8056-8a265c319355.png)
