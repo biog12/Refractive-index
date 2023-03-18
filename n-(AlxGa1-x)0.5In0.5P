@@ -1,0 +1,62 @@
+# -*- coding: utf-8 -*-
+"""
+Created on Fri Mar 17 21:52:21 2023
+
+@author: biog1
+"""
+
+# -*- coding: utf-8 -*-
+# Author: biog12
+# Last modified: 2023-3-18
+# Original data: J. Appl. Phys. 75, 478 (1994); doi: 10.1063/1.355824
+# (AlxGa1-x)0.5In0.5P
+
+import numpy as np
+import matplotlib.pyplot as plt
+
+π = np.pi
+
+
+v=2.99792458*10**8 # m/s
+#h= 4.135667662*10**(-15.0) #eV·s
+h= 6.626070040*10**(-34) #J·s
+
+
+def nL(l):
+    x=0.5
+    A=5.38+2.16*x
+    B=4.01-3.01*x
+    C=0.184-0.091*x+0.024*x*x
+    n=np.sqrt(A+B*(l*l/(l*l-C)))
+    return(n)
+
+
+    
+
+ev_min=1.2
+ev_max=2.5
+npoints=200
+eV = np.linspace(ev_min, ev_max, npoints)
+μm = 4.13566733e-1*2.99792458/eV
+
+n=nL(μm)
+
+#============================   DATA OUTPUT   =================================
+file = open('n.txt', 'w')
+for i in range(npoints-1):
+    file.write('\n    {:.4e} {:.4e}'.format(μm[i],n[i]))    
+file.close()
+       
+    
+# #===============================   PLOT   =====================================
+plt.figure(1)
+plt.plot(eV, n, label="n")
+plt.xlabel('Photon energy (eV)')
+plt.ylabel('n')
+plt.legend(bbox_to_anchor=(0,1.02,1,0),loc=3,ncol=2,borderaxespad=0)
+# #=====================================
+plt.figure(2)
+plt.plot(μm, n, label="n")
+plt.xlabel('Wavelength (μm)')
+plt.ylabel('n')
+plt.legend(bbox_to_anchor=(0,1.02,1,0),loc=3,ncol=2,borderaxespad=0)
